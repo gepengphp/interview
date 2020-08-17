@@ -15,6 +15,6 @@ composer config --unset repos.packagist
 
 ## 删除依赖
 ```
-composer remve xxx/xxx
+composer remove xxx/xxx
 composer dumpautoload
 ```
