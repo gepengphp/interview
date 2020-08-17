@@ -197,6 +197,106 @@ Content-Type: application/json
 `GET`，`PUT`，`DELETE`，`HEAD`，`OPTIONS` 和 `TRACE` 是幂等。
 安全性和幂等性均不保证反复请求能拿到相同的 `response`。以 `DELETE` 为例，第一次 `DELETE` 返回 `200` 表示删除成功，第二次返回 `404` 提示资源不存在，这是允许的。
 
+## 返回格式约定
+> ### 返回
+正常返回
+```json
+{
+    "code": 200, // 状态码 
+    "message": "success", // 信息描述
+    "data": {
+      "some attribute": {}
+    } // 返回值
+}
+```
+异常返回
+```json
+{
+    "code": 500, // 状态码 
+    "message": "database", // 信息描述
+    "sub_code": 5000102 // 副状态码，用于定位错误，拆分后为 500|01|02，500 表示http状态，01 表示业务，如：留言，02 表示行为，如：留言写入数据库失败
+    "sub_message": "服务繁忙" // 副描述信息，用于显示
+}
+```
+
+> ### code 状态码
+```
+2** - 请求成功
+3** - 重定向
+4** - 客户端错误，包含语法错误和无法完成的请求
+5** - 服务器错误
+```
+| 404，5xx 这些类别的错误，HTTP 返回的消息体可能为空或者不是 JSON 格式， 请在解析 JSON 时注意处理解析错误。
+
+> ### 多层结构
+多层结构以模型为标准，前端不同位置可以使用相同模型。
+示例：
+```json
+GET /course/1/notes/?page=1&size=10
+{
+    "code": 200,
+    "message": "success",
+    "data": {
+        "list": [
+            {
+                "id": 1,
+                "content": "留言内容",
+                "user_info": {
+                    "id": 1,
+                    "username": "zhang three"
+                },
+                "relay_user_info": {
+                    "id": 2,
+                    "username": "li four"
+                }
+            }
+        ]
+    }
+}
+```
+错误示例：
+```json
+"list": [
+    {
+        "id": 1,
+        "content": "留言内容",
+        "user_id": 1,
+        "username": "zhang three",
+        "relay_user_id": 2,
+        "relay_username": "li four"
+    }
+]
+```
+> ### 字段类型
+按照字段类型实际返回
+正确示例：
+```json
+{
+    "id": 1,
+    "username": "wang five",
+    "status": 2,
+    "is_online": true,
+    "timestamp": 1574936338,
+    "datetime": "2019-11-28",
+    "user_info": {},
+    "user_list": []
+}
+```
+错误示例：
+```json
+{
+    "id": "1",
+    "status": "2",
+    "is_online": 1,
+    "is_online": "true",
+    "timestamp": "1574936338",
+    "user_info": [],
+    "user_list": {}
+}
+```
+
+
+
 ### 参考链接
 [http://www.ruanyifeng.com/blog/2014/05/restful_api.html](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)
 
