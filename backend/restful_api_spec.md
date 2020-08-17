@@ -199,7 +199,12 @@ Content-Type: application/json
 
 ### 参考链接
 [http://www.ruanyifeng.com/blog/2014/05/restful_api.html](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)
+
 [http://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html](http://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html)
+
 [http://restful.p2hp.com/](http://restful.p2hp.com/)
+
 [https://www.cnblogs.com/linjiqin/p/9678022.html](https://www.cnblogs.com/linjiqin/p/9678022.html)
+
 [https://developer.github.com/v3/media/#request-specific-version](https://developer.github.com/v3/media/#request-specific-version)
+
