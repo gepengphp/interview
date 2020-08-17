@@ -2,10 +2,10 @@
 
 《高性能 MySQL （第三版）》读书笔记
 
-- 1.1 [MySQL 逻辑架构](#1.1)
+- 1.1 [MySQL 逻辑架构](11-mysql-逻辑架构)
 
 ## 第一章
-### [1.1 MySQL 逻辑架构](1.1)
+### 1.1 MySQL 逻辑架构
 
 ![MySQL 服务器逻辑架构图](../../../asset/imgs/mysql_logical_architecture_diagram.jpg)
 
