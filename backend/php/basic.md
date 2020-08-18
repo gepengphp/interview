@@ -13,6 +13,7 @@ if ($a = 'aa' and 'bb') {
 }
 // string(2) "aa"
 ```
+> **建议**：使用 `and` 或 使用 `()` 标明优先级
 
 ## `strtotime` 大小月 bug
 当前时间为 `2018-07-31`，执行 `date("Y-m-d",strtotime("-1 month"))` 输出结果为 `2018-07-01`。
@@ -101,4 +102,4 @@ function trans(bool $b) {
 trans('false');
 // bool(true)
 ```
-》 **场景**：`.env` 文件中，配置变量 `IS_PRO=false`，通过 `env()` 函数获取后值为 `string(5) false`，作为参数传入方法时会被转换为 `bool true`。
+> **场景**：`.env` 文件中，配置变量 `IS_PRO=false`，通过 `env()` 函数获取后值为 `string(5) false`，作为参数传入方法时会被转换为 `bool true`。
