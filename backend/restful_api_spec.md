@@ -241,11 +241,13 @@ GET /course/1/notes/?page=1&size=10
             {
                 "id": 1,
                 "content": "留言内容",
-                "user_info": {
+                "user_id": 1,
+                "relay_user_id": 2,
+                "user": {
                     "id": 1,
                     "username": "zhang three"
                 },
-                "relay_user_info": {
+                "relay_user": {
                     "id": 2,
                     "username": "li four"
                 }
