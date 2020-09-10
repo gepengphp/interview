@@ -8,3 +8,4 @@
     - memcache
     - mongodb
     - elasticsearch
+    - map_reduce
