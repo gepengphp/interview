@@ -54,6 +54,31 @@ SELECT CONCAT_WS(',');
 -- Incorrect parameter count in the call to native function 'concat_ws'
 ```
 
+- `group_concat`  
+group_concat([DISTINCT] 要连接的字段 [Order BY ASC/DESC 排序字段] [Separator '分隔符'])
+```sql
+SELECT * FROM articles;
+id    user_id    title
+1     1          PHP从入门到送外卖
+2     1          Mysql从删库到跑路
+3     2          pronhub
+
+SELECT user_id, GROUP_CONCAT(title) AS titles FROM articles GROUP BY user_id;
+user_id    title
+1          PHP从入门到送外卖,Mysql从删库到跑路
+2          pronhub
+
+SELECT user_id, GROUP_CONCAT(title separator ';') AS titles FROM articles GROUP BY user_id;
+user_id    title
+1          PHP从入门到送外卖;Mysql从删库到跑路
+2          pronhub
+
+SELECT user_id, GROUP_CONCAT(title ORDER BY title ASC separator ';') AS titles FROM articles GROUP BY user_id;
+user_id    title
+1          Mysql从删库到跑路;PHP从入门到送外卖
+2          pronhub
+```
+
 
 ## MySQL 数字函数
 
