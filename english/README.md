@@ -21,3 +21,6 @@
 
 `closure` [ˈkləʊʒə(r)] 闭包；停业，关闭; 倒闭; (路或桥的) 暂时封闭。
 - `PHP` 匿名函数，是 php5.3 的时候引入的,又称为 `Anonymous functions`。
+
+`algorithm` [ˈælɡərɪðəm] 算法；计算程序
+
