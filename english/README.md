@@ -24,3 +24,28 @@
 
 `algorithm` [ˈælɡərɪðəm] 算法；计算程序
 
+`associate` [əˈsəʊsieɪt , əˈsəʊsiət] 联想; 联系; 关联
+- 简写 `assoc`，编程中很常见。
+```cmd
+C:\> assoc /? ---
+显示或修改文件扩展名关联
+
+ASSOC [.ext[=[fileType]]]
+
+  .ext      指定跟文件类型关联的文件扩展名
+  fileType  指定跟文件扩展名关联的文件类型
+
+键入 ASSOC 而不带参数，显示当前文件关联。如果只用文件扩展
+名调用 ASSOC，则显示那个文件扩展名的当前文件关联。如果不为
+文件类型指定任何参数，命令会删除文件扩展名的关联。
+C:\> assoc .txt
+.txt=txtfile
+C:\> assoc .mp4
+.mp4=WMP11.AssocFile.MP4
+```
+- php 相关函数，`mysql_fetch_assoc`、`array_diff_assoc`、`array_uintersect_assoc`、`is_assoc` 等，表示**关联数组**（key => value 数组)
+
+`support` [səˈpɔːt] 支持; 拥护; 鼓励; 帮助; 援助; 资助; 赞助;
+
+`invoke` [ɪnˈvəʊk] 调用
+- php 魔法函数 `__[ɪnˈvəʊk]`，当对象被当作方法调用时，如果声明 `[ɪnˈvəʊk]` 方法，则执行。

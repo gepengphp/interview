@@ -124,7 +124,59 @@ SELECT ADDDATE('2020-09-10', INTERVAL '1:4:-10' HOUR_SECOND);
 ->2020-09-10 01:04:10
 ```
 
+- `DATEDIFF`
+DATEDIFF(date1,date2)
+返回（date1 - date2）的时间差，单位：日。省略掉时、分、秒后计算。
+**注意：** 参数相减顺序与 `TIMESTAMPDIFF` 顺序相反。
+```sql
+SELECT DATEDIFF('2008-12-30 00:00:00','2008-12-29 00:00:00') AS DiffDate
+->1
+SELECT DATEDIFF('2008-12-30 00:00:00','2008-12-29 23:59:59') AS DiffDate
+->1
+SELECT DATEDIFF('2008-12-29','2008-12-30') AS DiffDate
+->-1
+```
 
+- `TIMEDIFF`
+TIMEDIFF(time1,time2)
+返回两个时间相减得到的差值，time1 - time2。
+**注意：** 参数相减顺序与 `TIMESTAMPDIFF` 顺序相反。
+```sql
+SELECT TIMEDIFF('2020-10-01 12:00:00','2020-10-02 11:59:59');
+->-23:59:59
+```
+
+- `TIMESTAMPDIFF`
+TIMESTAMPDIFF(INTERVAL, datetime1, datetime2)
+返回（datetime2 - datetime1）的时间差，结果单位由 INTERVAL 参数给出。
+    - frac_second 毫秒（低版本不支持（MySQL 5.6 以下），用second，再除于1000）
+    - second 秒
+    - minute 分钟
+    - hour 小时
+    - day 天
+    - week 周
+    - month 月
+    - quarter 季度
+    - year 年
+```sql
+**注意：** 参数相减顺序与 `DATEDIFF`、`TIMEDIFF` 顺序相反。
+-- 相差满一天才算
+SELECT TIMESTAMPDIFF(DAY,'2020-10-01 12:00:00','2020-10-02 11:59:59');
+->0
+```
+
+- `NOW`
+返回的是当前时间的年月日时分秒
+
+- `SYSDATE`
+返回的是当前时间的年月日时分秒
+**注意：** 与 `NOW` 相似，但 `SYSDATE` 在程序执行时动态获取，所以，因为SYSDATE()函数是非确定性的，索引不能用于评估求值引用它的表达式。
+
+- `CURDATE`
+返回年月日信息
+
+- `CURTIME`
+返回当前时间的时分秒信息
 
 ## MySQL 高级函数
 
