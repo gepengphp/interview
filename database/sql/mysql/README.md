@@ -5,3 +5,5 @@
 [子查询](./subquery.md)
 
 [方法](./functions.md)
+
+[奇技淫巧](./奇技淫巧.md)
