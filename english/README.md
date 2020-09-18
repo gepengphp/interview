@@ -49,3 +49,5 @@ C:\> assoc .mp4
 
 `invoke` [ɪnˈvəʊk] 调用
 - php 魔法函数 `__[ɪnˈvəʊk]`，当对象被当作方法调用时，如果声明 `[ɪnˈvəʊk]` 方法，则执行。
+
+`recursive` [rɪˈkɜːsɪv] 依赖
