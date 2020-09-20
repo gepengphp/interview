@@ -6,4 +6,10 @@
 
 [方法](./functions.md)
 
+[索引](./index.md)
+
+[锁](./lock.md)
+
+[规范](./standard.md)
+
 [奇技淫巧](./奇技淫巧.md)
