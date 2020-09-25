@@ -310,3 +310,8 @@ GET /course/1/notes/?page=1&size=10
 
 [https://developer.github.com/v3/media/#request-specific-version](https://developer.github.com/v3/media/#request-specific-version)
 
+### 大厂规范
+todo 添加整理大厂规范
+https://help.aliyun.com/document_detail/25491.html
+https://developer.github.com/v3/#current-version
+https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md#711-http-status-codes
