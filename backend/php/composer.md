@@ -4,28 +4,28 @@
 
 ## 最佳实践
 
-### 创建项目
+- 创建项目
 
-### 修改镜像地址
-```sh
-composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ # 全局
-composer config repo.packagist composer https://mirrors.aliyun.com/composer/ # 项目
-```
+- 修改镜像地址
+    ```sh
+    composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ # 全局
+    composer config repo.packagist composer https://mirrors.aliyun.com/composer/ # 项目
+    ```
 
-### 开发环境
-```sh
-composer search monolog # 查询
-composer search require monolog # 安装
-composer remove xxx/xxx # 删除依赖
-composer dumpautoload # 更新 autoload
-```
+- 开发环境
+    ```sh
+    composer search monolog # 查询
+    composer search require monolog # 安装
+    composer remove xxx/xxx # 删除依赖
+    composer dumpautoload # 更新 autoload
+    ```
 
-### 将 `composer.lock` 加入版本管理工具
+- 将 `composer.lock` 加入版本管理工具
 
-### 生产环境
-```sh
-composer install --no-dev # 安装
-```
+- 生产环境
+    ```sh
+    composer install --no-dev # 安装
+    ```
 
 
 ## 常用命令
