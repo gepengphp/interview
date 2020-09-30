@@ -26,7 +26,7 @@
 
 `associate` [əˈsəʊsieɪt , əˈsəʊsiət] 联想; 联系; 关联
 - 简写 `assoc`，编程中很常见。
-```cmd
+```sh
 C:\> assoc /? ---
 显示或修改文件扩展名关联
 
@@ -53,3 +53,9 @@ C:\> assoc .mp4
 `recursive` [rɪˈkɜːsɪv] 依赖
 
 `standard` [ˈstændəd] 标准
+
+`native` [ˈneɪtɪv] 本地，本土，土著
+- vue 事件修饰符。件绑定事件时候，必须加上native ，否则会认为监听的是来自Item组件自定义的事件
+  ```js
+  <Item @click.native="shijian()"></Item>
+  ```
