@@ -1,16 +1,16 @@
 # Redis 过期策略
-本位基于 redis v 4.0.9 版本
+基于 redis v 4.0.9 版本
 
 ## 设置 key 过期时间的命令
 ```sh
 # 将键 key 的生存时间设置为 ttl 秒
-reids> EXPlRE <key> <ttl>
+redis> EXPlRE <key> <ttl>
 # 将键 key 的生存时间设置为 ttl 毫秒
-reids> PEXPIRE <key> <ttl>
+redis> PEXPIRE <key> <ttl>
 # 将键 key 的过期时间设置为 timestamp 所指定的秒数时间戳
-reids> EXPIREAT <key> <timestamp>
+redis> EXPIREAT <key> <timestamp>
 # 将键 key 的过期时间设置为 timestamp 所指定的毫秒数时间戳
-reids> PEXPIREAT <key> <timestamp>
+redis> PEXPIREAT <key> <timestamp>
 # 移除键 key 的过期时间
 redis> PERSIST <key>
 # 返回键 key 剩余生命周期，秒。-1 为不过期
@@ -31,7 +31,7 @@ redis> PTTL <key>
     redis> SETNX <key> <value>
     redis> expire <key> 10
     ```
-- Redis 为此做了改进，`2.6.12` 以上版本可以用 set 获取锁。语法：
+- Redis 为此做了改进，`2.6.12` 以上版本可以用 set 获取锁。语法：  
     SET key value [EX seconds] [PX milliseconds] [NX|XX]  
     EX seconds：设置失效时长，单位秒  
     PX milliseconds：设置失效时长，单位毫秒  
@@ -56,15 +56,15 @@ redis> PTTL <key>
 每隔一段时间，程序就对数据库进行检查，删除里面的过期键。至于要删除多少过期键，以及检查多少数据库，则有算法决定。  
 该策略是上述两种策略的折中方案，需要通过实际情况，来设置删除操作的执行时长和频率。
 
-- **redis 使用的过期策略**是：`定期删除` + `惰性删除`。  
-redis 默认每隔 100ms 就随机抽取一些设置了过期时间的 key，检查其是否过期，如果过期就删除。  
-假设 redis 里放了 10w 个 key，都设置了过期时间，你每隔几百毫秒，就检查 10w 个 key，那 redis 基本上就死了，cpu 负载会很高的，消耗在你的检查过期 key 上了。注意，这里可不是每隔 100ms 就遍历所有的设置过期时间的 key，那样就是一场性能上的灾难。实际上 redis 是每隔 100ms 随机抽取一些 key 来检查和删除的。  
-但是问题是，定期删除可能会导致很多过期 key 到了时间并没有被删除掉，那咋整呢？所以需要配合惰性删除。这就是说，在你获取某个 key 的时候，redis 会检查一下 ，这个 key 如果设置了过期时间那么是否过期了？如果过期了此时就会删除，不会给你返回任何东西。  
+- **Redis 使用的过期策略**是：`定期删除` + `惰性删除`。  
+Redis 默认每隔 100ms 就随机抽取一些设置了过期时间的 key，检查其是否过期，如果过期就删除。  
+假设 Redis 里放了 10w 个 key，都设置了过期时间，你每隔几百毫秒，就检查 10w 个 key，那 Redis 基本上就死了，cpu 负载会很高的，消耗在你的检查过期 key 上了。注意，这里可不是每隔 100ms 就遍历所有的设置过期时间的 key，那样就是一场性能上的灾难。实际上 Redis 是每隔 100ms 随机抽取一些 key 来检查和删除的。  
+但是问题是，定期删除可能会导致很多过期 key 到了时间并没有被删除掉，那咋整呢？所以需要配合惰性删除。这就是说，在你获取某个 key 的时候，Redis 会检查一下 ，这个 key 如果设置了过期时间那么是否过期了？如果过期了此时就会删除，不会给你返回任何东西。  
 获取 key 的时候，如果此时 key 已经过期，就删除，不会返回任何东西。
 
 ## 内存淘汰策略
 Redis 的内存淘汰策略是指在 Redis 的用于缓存的内存不足时，怎么处理需要新写入且需要申请额外空间的数据。  
-内存淘汰策略于过期策略是两回事，经常有文章搞混。
+**内存淘汰策略**与**过期策略**是两回事，经常有文章搞混。
 - `volatile-lru` 对设置了过期时间的 key 进行 LRU 算法删除（默认）  
 - `allkeys-lru` 对所有 key 使用 LRU 算法删除  
 - `volatile-lfu` 对设置了过期时间的 key 进行 LFU 算法删除  

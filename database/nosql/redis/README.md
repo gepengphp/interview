@@ -3,6 +3,10 @@ REmote DIctionary Server
 [官网](http://www.redis.cn/)  
 [文档](http://www.redis.cn/commands.html)  
 
-
+- [数据类型（文档搬运）]
+- [规范]
 - [过期策略](./expire.md)
-
+- [持久化]
+- [主从/集群]
+- [哨兵]
+- [运维注意事项]
