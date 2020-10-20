@@ -4,25 +4,47 @@
 
 - 配置， redis.conf 配置文件的 `APPEND ONLY MODE` 下
     - `appendonly`，默认值是 no。Reids 默认的持久化方式是 `RDB`，如果需要开始 `AOf`，需要改为 yes。
-    - `appendfilename`，默认是 appendonly.aof，aof文件名。
+    - `appendfilename`，默认是 appendonly.aof，aof 文件名。
     - `appendfsync`，`AOF` 持久化策略的配置。
         - `no` 表示不执行 fsync，由操作系统保证数据同步到磁盘，速度最快，但是不太安全。
         - `always` 表示每次写入都执行 fsync，以保证数据同步到磁盘，效率很低。
-        - `everysec` 表示每秒执行一次 fsync，可能会导致丢失这 1s 数据。通常选择 `everysec`，兼顾安全性和效率。
+        - `everysec` 表示每秒执行一次 fsync，可能会导致丢失这 1s 数据。**通常选择 `everysec`**，兼顾安全性和效率。
     - `no-appendfsync-on-rewrite`，默认值为 no。在 `AOF` 重写或者写入 `RDB` 文件的时候，会执行大量 IO，此时对于 everysec 和 always 的 `AOF` 模式来说，执行 fsync 会造成阻塞过长时间，no-appendfsync-on-rewrite 字段设置为默认设置为 no。如果对延迟要求很高的应用，这个字段可以设置为 yes，否则还是设置为 no，这样对持久化特性来说这是更安全的选择。设置为 yes 表示 rewrite 期间对新写操作不 fsync,暂时存在内存中,等 rewrite 完成后再写入，默认为 no，建议 yes。Linux 的默认 fsync 策略是 30 秒。可能丢失 30 秒数据。
     - `auto-aof-rewrite-percentage`，默认值为 100。`AOF` 自动重写配置，当目前 aof 文件大小超过上一次重写的 aof 文件大小的百分之多少进行重写，即当 aof 文件增长到一定大小的时候，Redis 能够调用 bgrewriteaof 对日志文件进行重写。当前 aof 文件大小是上次日志重写得到 aof 文件大小的二倍（设置为 100）时，自动启动新的日志重写过程。
     - `auto-aof-rewrite-min-size`, 64mb。设置允许重写的最小 aof 文件大小，避免了达到约定百分比但尺寸仍然很小的情况还要重写。
     - `aof-load-truncated`。aof 文件可能在尾部是不完整的，当 Redis 启动的时候，aof 文件的数据被载入内存。  
-    重启可能发生在 Redis 所在的主机操作系统宕机后，尤其在ext4 文件系统没有加上 `data=ordered` 选项，出现这种现象：Redis 宕机或者异常终止不会造成尾部不完整现象，可以选择让 Redis 退出，或者导入尽可能多的数据。  
+    重启可能发生在 Redis 所在的主机操作系统宕机后，尤其在 ext4 文件系统没有加上 `data=ordered` 选项，出现这种现象：Redis 宕机或者异常终止不会造成尾部不完整现象，可以选择让 Redis 退出，或者导入尽可能多的数据。  
     如果选择的是 yes，当截断的 aof 文件被导入的时候，会自动发布一个 log 给客户端然后 load。如果是 no，用户必须手动 `redis-check-aof` 修复 aof 文件才可以。默认值为 yes。
     - `dir`。`AOF` 保存文件的位置和 `RDB` 保存文件的位置一样，都是通过 redis.conf 配置文件的 dir 配置。
 
+- aof 文件格式遵循 [Redis 协议](./redis_protocol.md)。例：
+    ```sh
+    > vi appendonly.aof
+    *2
+    $6
+    SELECT
+    $1
+    0
+    *4
+    $4
+    sadd
+    $4
+    lang
+    $3
+    lua
+    $6
+    python
+    *1
+    $8
+    FLUSHALL
+    ```
+
 - 恢复数据  
-    重启 Redis 之后就会进行 AOF 文件的载入。  
+    重启 Redis 之后就会进行 `AOF` 文件的载入。  
 　　异常修复命令：`redis-check-aof --fix` 进行修复
 
 - `AOF` 重写  
-    由于 `AOF` 持久化是 Redis 不断将写命令记录到 aof 文件中，随着 Redis 不断的进行，`AOF` 的文件会越来越大，占用服务器内存越大以及 AOF 恢复要求时间越长。为了解决这个问题，Redis 新增了重写机制，当 aof 文件的大小超过所设定的阈值时，Redis 就会启动 aof 文件的内容压缩，只保留可以恢复数据的最小指令集。可以使用命令 `bgrewriteaof` 来重新。  
+    由于 `AOF` 持久化是 Redis 不断将写命令记录到 aof 文件中，随着 Redis 不断的进行，`AOF` 的文件会越来越大，占用服务器内存越大以及 `AOF` 恢复要求时间越长。为了解决这个问题，Redis 新增了重写机制，当 aof 文件的大小超过所设定的阈值时，Redis 就会启动 aof 文件的内容压缩，只保留可以恢复数据的最小指令集。可以使用命令 `bgrewriteaof` 来重新。  
     比如如下情况：
     ```sh
     > flashall

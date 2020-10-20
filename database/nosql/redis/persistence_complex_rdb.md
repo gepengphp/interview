@@ -64,7 +64,7 @@
     执行完成之后，`dirty` 计数器更新为 0，`lastsave` 也更新为执行命令的完成时间。
 - `COW` 机制  
     `Copy On Write` **写时复制**。核心思路：fork 一个子进程，只有在父进程发生写操作修改内存数据时，才会真正分配内存空间，并复制内存中的数据，而且**只复制被修改的内存页中的数据**；  
-    Redis 的 `BGSAVE` 命令生成 `RDB` 文件时，本质就是调用 Linux 中的 fork() 命令，Linux 下的 fork() 系统调用实现了 copy-on-wirte 写时复制；  
+    Redis 的 `BGSAVE` 命令生成 rdb 文件时，本质就是调用 Linux 中的 fork() 命令，Linux 下的 fork() 系统调用实现了 copy-on-wirte 写时复制；  
     fork() 是类 Unix 操作系统上创建线程的主要方法，fork 用于创建子进程（等同于当前进程的副本）；  
     `copy-on-write` 技术，在 fork 出子进程后，与父进程共享内存空间，两者只是虚拟空间不同，但是其对应的物理空间是同一个。
 - Redis 中的 `CopyOnWrite`  
