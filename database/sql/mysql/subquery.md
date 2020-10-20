@@ -6,15 +6,15 @@
 当子查询出现在目标列位置的时候，这种查询只能是标量子查询。也就是说子查询返回的结果只能是一个元组的一个属性。否则，数据库会返回错误信息。
 
 ### 子查询出现在FROM字句的位置
-简单来说，`FROM` 子句部分的子查询只能是非相关子查询，非相关子查询出现在FROM子句中可以上拉到父层，在多表连接时统一考虑连接代价然后进行优化。
+简单来说，`FROM` 子句部分的子查询只能是 **`非相关`** 子查询，非相关子查询出现在FROM子句中可以上拉到父层，在多表连接时统一考虑连接代价然后进行优化。
 ```sql
 -- ×
-select * from t1, (select *from t2 where t1.k1 = t2.k2);
+select * from t1, (select * from t2 where t1.k1 = t2.k2);
 错误代码： 1054
 Unknown column 't1.k1' in 'where clause'
 
 -- √
-select * from t1, (select *from t2) where t1.k1 = t2.k2;
+select * from t1, (select * from t2) where t1.k1 = t2.k2;
 ```
 
 ### 子查询出现在WHERE子句当中

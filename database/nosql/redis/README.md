@@ -6,7 +6,7 @@ REmote DIctionary Server
 - [数据类型（文档搬运）]
 - [规范]
 - [过期策略](./expire.md)
-- [持久化]
+- [持久化](./persistence.md)
 - [主从/集群]
 - [哨兵]
 - [运维注意事项]

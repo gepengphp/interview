@@ -68,3 +68,22 @@ int userId = user.get("user_id");
 或
 <if test='mnyType == "1"'>
 ```
+
+## 问题 Error updating database.  Cause: java.lang.IllegalArgumentException: invalid comparison: java.util.Date and java.lang.String
+Date 类型不能和空字符串进行比较。去掉 `and time != ''`
+```xml
+<update id="updateFinishTime">
+    UPDATE `table` 
+    <set>
+        <choose>
+            <when test="time != null and time != ''">
+                `time`=#{time,jdbcType=TIMESTAMP}
+            </when>
+            <otherwise>
+                `time`=TIMESTAMP()
+            </otherwise>
+        </choose>
+    </set> 
+    WHERE `id`=#{id,jdbcType=INTEGER}
+</update>
+```
