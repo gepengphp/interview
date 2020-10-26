@@ -11,3 +11,5 @@
 - k8s
 
 - nginx
+
+- zabbix
