@@ -4,3 +4,4 @@
 - [快排](./qsort.md)
 - [选择排序](./select_sort.md)
 - [插入排序](./insert_sort.md)
+- [希尔排序](./shell_sort.md)

@@ -5,6 +5,7 @@
 [文档](http://www.redis.cn/commands.html)  
 [另一个文档](http://redisdoc.com/index.html)
 
+- [安装](./install.md)
 - [数据类型（文档搬运）]
 - [规范]
 - [过期策略](./expire.md)
