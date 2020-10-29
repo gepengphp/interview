@@ -8,7 +8,7 @@ $pid = getmypid(); // 子进程 pid
 $url = fgets(STDIN); // 获取标准输入
 
 // $response = file_get_contents($url);
-// 换成随机一个随机数，并休眠
+// 换成随机一个随机数，并休眠，结果比较直观
 $rand = rand(1, 5);
 sleep($rand);
 $response = [
