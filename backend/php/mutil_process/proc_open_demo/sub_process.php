@@ -1,15 +1,14 @@
 <?php
-
+/**
+ * 访问url，返回数据
+ */
 $stime = microtime(true);
 
-$pid = getmypid();
-
-// echo '[sub pid ' . $pid . '] sub process start.', PHP_EOL;
-
+$pid = getmypid(); // 子进程 pid
 $url = fgets(STDIN); // 获取标准输入
-// echo '[sub pid ' . $pid . '] main process input: ' . $url, PHP_EOL;
 
 // $response = file_get_contents($url);
+// 换成随机一个随机数，并休眠
 $rand = rand(1, 5);
 sleep($rand);
 $response = [
