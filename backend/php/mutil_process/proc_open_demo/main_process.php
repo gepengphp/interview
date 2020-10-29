@@ -16,7 +16,7 @@ $urls = [
 $stime = microtime(true); // 记录开始时间
 
 $pipesSet = []; // 管道集合
-foreach ($urls as $i => $url) { // 循环创建管道，有脚本处理任务
+foreach ($urls as $i => $url) { // 循环创建管道，用脚本处理任务
     $pipesSet[$i]['process'] = proc_open($command, [
         0 => ['pipe', 'r'], // 标准输入
         1 => ['pipe', 'w'], // 标准输出
@@ -27,7 +27,7 @@ foreach ($urls as $i => $url) { // 循环创建管道，有脚本处理任务
 }
 
 for ($i = 0;$i < count($pipesSet);$i ++) { // 遍历通道集合
-    $line = fgets($pipesSet[$i]['pipes'][1]); // 读取子进程标准输出，这里是阻塞的
+    $line = fgets($pipesSet[$i]['pipes'][1]); // 读取子进程标准输出，这里是阻塞的，等待子进程返回后才会继续执行
     fclose($pipesSet[$i]['pipes'][1]); // 关闭通道输出流
     proc_close($pipesSet[$i]['process']); // 关闭通道
     
