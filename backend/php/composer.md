@@ -4,6 +4,8 @@
 
 ## 最佳实践
 
+- 取消 php.ini `disable_functions` 中的 `proc_open`、`proc_get_status` 函数。  
+
 - 创建项目
 
 - 修改镜像地址
