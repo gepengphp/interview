@@ -29,6 +29,8 @@ foreach ($urls as $i => $url) { // 循环创建管道，用脚本处理任务
     fclose($pipesSet[$i]['pipes'][0]); // 关闭通道输入流
 }
 
+echo 'main process process open finished, waiting', PHP_EOL;
+
 for ($i = 0;$i < count($pipesSet);$i ++) { // 遍历通道集合
     $line = fgets($pipesSet[$i]['pipes'][1]); // 读取子进程标准输出，这里是阻塞的，等待子进程返回后才会继续执行
     fclose($pipesSet[$i]['pipes'][1]); // 关闭通道输出流
@@ -41,4 +43,4 @@ for ($i = 0;$i < count($pipesSet);$i ++) { // 遍历通道集合
 
 $etime = microtime(true);
 // 输出父进程执行时间
-echo 'main process start [pid ' . $pid . '] [run_time ' . ($etime - $stime) . ']', PHP_EOL;
+echo 'main process end [pid ' . $pid . '] [run_time ' . ($etime - $stime) . ']', PHP_EOL;
