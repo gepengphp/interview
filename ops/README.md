@@ -13,3 +13,7 @@
 - nginx
 
 - zabbix
+
+- [keepalived](./keepalived/README.md)
+
+- [HAProxy](./haproxy/README.md)
