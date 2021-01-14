@@ -50,7 +50,7 @@ C:\> assoc .mp4
 `invoke` [ɪnˈvəʊk] 调用
 - php 魔法函数 `__invoke`，当对象被当作方法调用时，如果声明 `invoke` 方法，则执行。
 
-`recursive` [rɪˈkɜːsɪv] 依赖
+`recursive` [rɪˈkɜːsɪv] 递归
 
 `standard` [ˈstændəd] 标准
 
@@ -59,3 +59,17 @@ C:\> assoc .mp4
   ```js
   <Item @click.native="shijian()"></Item>
   ```
+
+`dependency` [dɪˈpendənsi] 依赖
+- Maven 配置中，添加依赖包的标签名称
+    ```xml
+    <!--web依赖包，web应用必备-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    ```
+
+```
+
+
