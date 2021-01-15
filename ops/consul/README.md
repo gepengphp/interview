@@ -81,6 +81,7 @@ WantedBy=multi-user.target graphical.target
 $ echo '#!/bin/bash
 /usr/local/consul/consul agent -server -bootstrap-expect 1 -node=ipt-1 -data-dir=/usr/local/consul/data/ -log-file=/usr/local/consul/log/consul_log-$(date +%Y-%m-%d--%H-%M) -bind=127.0.0.1 -client=0.0.0.0 -ui
 ' > /usr/local/consul/consul.start.sh
+$ chmod +x /usr/local/consul/consul.start.sh
 
 # 创建日志保存目录
 $ mkdir -p /usr/local/consul/log
