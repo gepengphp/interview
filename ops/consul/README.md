@@ -121,10 +121,10 @@ BASE_PATH=$(cd `dirname $0`;pwd)
 INI_PATH=$BASE_PATH/server.d/server.ini
 LEADER=`cat $INI_PATH | sed '/^leader=/!d;s/.*=//'`
 
-if [ -n $LEADER ]; then
-    JOIN=""
-else
+if [ $LEADER ]; then
     JOIN="-join ${LEADER}"
+else
+    JOIN=""
 fi
 
 /usr/bin/consul agent -server -ui \
@@ -134,7 +134,8 @@ fi
 -bind=$(ifconfig ens33 | grep 'inet ' | cut -d ' ' -f 10) \
 -client=0.0.0.0 \
 -config-dir=$BASE_PATH/server.d \
--data-dir=/usr/local/consul/data
+-data-dir=/usr/local/consul/data \
+$JOIN
 ```
 
 - 3 consul server 配置文件
