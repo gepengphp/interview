@@ -1,6 +1,8 @@
 # 安装 Jenkins
 
-### rmp 安装
+## rmp 安装
+
+### 安装
 ```sh
 wget http://pkg.jenkins-ci.org/redhat-stable/jenkins-2.7.3-1.1.noarch.rpm -c
 rpm -ivh jenkins-2.7.3-1.1.noarch.rpm
@@ -27,9 +29,28 @@ $ service jenkins status
 根据启动文件 `/etc/rc.d/init.d/jenkins` 找到配置文件
 ```sh
 $ vi /etc/rc.d/init.d/jenkins
+# 添加 jdk 执行目录
+# 找到 candidates="，再第一行添加 jdk 执行文件目录
 ```
+
 `# Check for existence of needed config file and read it
 JENKINS_CONFIG=/etc/sysconfig/jenkins`
 
 
 修改配置文件 `/etc/sysconfig/jenkins`，修改监听域名和端口。
+
+
+修改 Jenkins 启动用户
+jenkins 默认用户是 jenkins，远程部署或脚本执行时需要高级权限，所以可以把启动用户改为 root
+```sh
+> vi `/etc/sysconfig/jenkins`
+# JENKINS_USER="jenkins" => JENKINS_USER="root"
+
+# 修改 jenkins 目录权限
+> chown -R root /var/log/jenkins
+> chgrp -R root /var/log/jenkins
+> chown -R root /var/lib/jenkins
+> chgrp -R root /var/lib/jenkins
+> chown -R root /var/cache/jenkins
+> chgrp -R root /var/cache/jenkins
+```

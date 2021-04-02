@@ -6,6 +6,8 @@
 
 - [SESSION 跨域](./session_crose.md)
 
+- [ssh 免密认证](./ssh-no-pass.md)
+
 
 ## 待整理
 [网络基础](https://www.bilibili.com/video/BV197411t7sv?p=1)  
