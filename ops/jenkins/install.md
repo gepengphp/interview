@@ -54,3 +54,13 @@ jenkins 默认用户是 jenkins，远程部署或脚本执行时需要高级权�
 > chown -R root /var/cache/jenkins
 > chgrp -R root /var/cache/jenkins
 ```
+
+
+## yum 安装
+
+```sh
+# 添加 jenkins 镜像
+> wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+# 安装
+> yum install jenkins -y
+```
