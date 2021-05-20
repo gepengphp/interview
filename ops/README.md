@@ -21,3 +21,7 @@
 - [VPN](./vpn/README.md)
 
 - [hyper-v](./hyper-v.md)
+
+- [自建 DNS 服务器](./dns.md)
+
+- [syslog](./syslog/服务端配置.md)
