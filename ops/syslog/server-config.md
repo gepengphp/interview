@@ -35,6 +35,8 @@ root      51056 129089  0 15:26 pts/3    00:00:00 grep --color=auto rsyslog
 tcp      0   0 0.0.0.0:514     0.0.0.0:*     LISTEN      off (0.00/0/0)
 ```
 
+> **注意**：经测试，`CUCM` 发送 `syslog` 使用的是 `UDP` 协议，关闭 `TCP Mod` 也可以接收日志。
+
 // todo 补全以下内容
 ### 日志级别
 ### 存储位置
