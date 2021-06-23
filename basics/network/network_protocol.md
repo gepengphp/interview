@@ -39,3 +39,17 @@
         16 个位，即 2^16（由 [TCP 协议](./tcp.md)报文头端口（PORT）长度限制）。0 ~ 65536，其中 0 ~ 1023 为系统占用端口，1024 ~ 65536 给应用软件用。  
     - [TCP 协议](./tcp.md)
     - [UDP 协议](./udp.md)
+
+
+### 协议种类
+
+- Webscket
+- [LDAP]()
+- UDP
+- TCP
+- HTTP
+- HTTPS
+- SPDY
+- SNMP
+- RTMP
+- SMTP
