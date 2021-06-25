@@ -18,4 +18,4 @@
 
 ### [助手函数](./helper.md)
 
-### [Other](./other.md)
+### [Other](./other/README.md)
