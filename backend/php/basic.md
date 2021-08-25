@@ -26,6 +26,8 @@
 
 - [`Filesystem` 函数缓存](./basic/filesystem-cache.md)
 
+- [`str_replace` 函数的问题](./basic/str_replace.md)
+
 
 ### “用法”
 
