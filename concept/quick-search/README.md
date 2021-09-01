@@ -10,7 +10,7 @@
 
 ### C
 
-[C2C](./c/c2c.md)
+[C2C](./c/c2c.md), [CGI](./c/cgi.md)
 
 ### D
 
@@ -19,7 +19,11 @@
 ### E
 [ELK](./e/elk.md), [ETL](./e/etl.md), [ELT](./e/elt.md)
 
-### F~H
+### F
+
+[FPM](./f/fpm.md)
+
+### H
 
 ### I
 
@@ -32,6 +36,8 @@
 [MVVM](./m/mvvm.md), [MBA](./m/mba.md)
 
 ### N
+
+[NAS](./n/nas.md)
 
 ### O
 
