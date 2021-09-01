@@ -19,3 +19,7 @@
 ### [助手函数](./helper.md)
 
 ### [Other](./other/README.md)
+
+### [php-fpm](./php-fpm.md)
+
+### [CGI](./cgi.md)
