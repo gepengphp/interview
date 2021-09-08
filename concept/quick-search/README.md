@@ -14,7 +14,7 @@
 
 ### D
 
-[DW](./d/dw.md)
+[DW](./d/dw.md), [DDD](./d/ddd.md)
 
 ### E
 [ELK](./e/elk.md), [ETL](./e/etl.md), [ELT](./e/elt.md)
@@ -22,6 +22,10 @@
 ### F
 
 [FPM](./f/fpm.md)
+
+### G
+
+[GUID](./g/guid.md)
 
 ### H
 
@@ -57,4 +61,10 @@
 
 [SaaS](./s/saas.md)
 
-### T~Z
+### T
+
+### U
+
+[UUID](./u/uuid.md)
+
+### V~Z
