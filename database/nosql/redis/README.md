@@ -16,3 +16,8 @@
 
 - [rdb-tool]
 - [Twemproxy](./twemproxy.md)
+
+### 应用场景
+- [延迟队列]
+- [队列ACK]
+- [重试队列/死信队列]
