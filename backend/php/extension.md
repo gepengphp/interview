@@ -18,5 +18,8 @@
 > make && make install
 ```
 
-# 扩展安装记录
+## `phpize`
+
+## 扩展安装记录
 - [snmp](./extension/snmp.md)
+- [swoole](./swoole.md)
