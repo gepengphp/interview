@@ -70,6 +70,12 @@ C:\> assoc .mp4
     </dependency>
     ```
 
-
-
+`purge` [破纸] 清除
+- mysql 删除 bin log，
+    ```sql
+    -- 删除 mysql-bin.000079 之前的 bin log
+    mysql> purge binary logs to 'mysql-bin.000079';
+    -- 显示当前 bin log 日志
+    mysql> show binary logs;
+    ```
 
