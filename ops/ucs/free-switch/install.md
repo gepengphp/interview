@@ -73,21 +73,23 @@ Registering you for ClueCon http://www.cluecon.com ..... See you in August. ;-)
 此次安装过程中，以下错误只遇到了第 2 个，其他依赖均以在编译前安装完成。
 ```sh
 # 1. The C++ compiler does not work. Please (re)install the C++ compiler
-> yum install gcc-c++11
+> yum install gcc-c++
 # 2. no usable zlib; please install zlib devel package or equivalent
-> yum install zlib-devel11
+> yum install zlib-devel
 # 3. Library requirements (sqlite3 >= 3.6.20) not met;
-> yum install sqlite-devel11
+> yum install sqlite-devel
 # 4. Library requirements (libcurl >= 7.19) not met;
-> yum install curl-devel11
+> yum install curl-devel
 # 5. Library requirements (libpcre >= 7.8) not met;
-> yum install pcre-devel11
+> yum install pcre-devel
 # 6. Library requirements (speex >= 1.2rc1 speexdsp >= 1.2rc1) not met;
-> yum install speex-devel11
+> yum install speex-devel
 # 7. You need to either install libldns-dev or disable mod_enum in modules.conf
-> yum install ldns-devel11
+> yum install ldns-devel
 # 8. You need to either install libedit-dev (>= 2.11) or configure with –disable-core-libedit-support
-> yum install libedit-devel11
+> yum install libedit-devel
 # 9. OpenSSL >= 1.0.1e and associated developement headers required
-> yum install openssl-devel11
+> yum install openssl-devel
 ```
+
+// todo 没装完，下次从新来
