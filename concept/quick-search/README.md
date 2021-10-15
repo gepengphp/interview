@@ -59,7 +59,7 @@
 
 ### S
 
-[SaaS](./s/saas.md)
+[SaaS](./s/saas.md), [SLAT](./s/slat.md)
 
 ### T
 
