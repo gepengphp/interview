@@ -79,6 +79,15 @@ composer dumpautoload
 composer dump-autoload
 ```
 
+## 性能调优
+jenkins 默认占用内存比较大，需要调整参数，限制内存占用。   
+
+yum 安装 Jenkins 的 catalina.sh 文件在 `/etc/sysconfig/jenkins/`。
+`JENKINS_JAVA_OPTIONS` 选项添加参数 `-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m`
+
+```ini
+JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
+```
 
 ## 文档
 https://docs.phpcomposer.com/03-cli.html#install
