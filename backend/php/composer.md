@@ -89,5 +89,11 @@ yum 安装 Jenkins 的 catalina.sh 文件在 `/etc/sysconfig/jenkins/`。
 JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
 ```
 
+> `catalina` 是 Tomcat 服务器使用的 Apache 实现的 servlet 容器的名字。   
+Tomcat的核心分为3个部分：  
+（1）Web容器---处理静态页面；   
+（2）catalina --- 一个servlet容器-----处理 servlet；   
+（3）还有就是 JSP 容器，它就是把 jsp 页面翻译成一般的 servlet。   
+
 ## 文档
 https://docs.phpcomposer.com/03-cli.html#install
