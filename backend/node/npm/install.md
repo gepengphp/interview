@@ -6,11 +6,18 @@
 ### 安装过程
 ```sh
 > cd /soft
+# 下载解压拷贝
 > wget https://nodejs.org/dist/v14.15.0/node-v14.15.0-linux-x64.tar.xz
 > tar -xvf node-v14.15.0-linux-x64.tar.xz
 > mkdir /usr/local/node
-> mv node-v10.14.1-linux-x64/* /usr/local/node
-> vi /etc/bashrc # 添加目录【/usr/loca/node/bin】到 PATH 变量
+> mv node-v14.15.0-linux-x64/* /usr/local/node
+
+# 添加 node 执行文件目录到 PATH 变量
+> vi /etc/profile 
+# add node
+# export NODE_HOME=/usr/local/node
+# export PATH=$NODE_HOME/bin:$PATH
+
 > source /etc/bashrc # 环境变量生效（当前会话）
 > node -v
 v14.15.0
